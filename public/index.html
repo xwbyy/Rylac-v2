@@ -1,179 +1,182 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rylac AI - Asisten Cerdas Anda</title>
+    <title>Rylac Tools - Multi-functional Web Tool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 <body>
-    <!-- iOS Style Header -->
-    <header>
-        <div class="container header-container">
-            <a href="#" class="logo floating">
-                <i class="fas fa-robot"></i>
-                <span>Rylac AI</span>
-            </a>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#features">Fitur</a></li>
-                <li><a href="#testimonials">Testimoni</a></li>
-                <li><a href="https://rylac.my.id" target="_blank">Mulai Sekarang</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="floating delay-1">Rasakan Masa Depan dengan Rylac AI</h1>
-                <p class="floating delay-2">Asisten cerdas Anda untuk segala kebutuhan digital. Chat dengan AI canggih kami, download konten media sosial, dan akses berbagai alat powerful - semuanya dalam satu platform.</p>
-                <a href="https://rylac.my.id" class="cta-button">Mulai Sekarang</a>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <h1 class="logo">Rylac Tools</h1>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title">Mengapa Memilih Rylac AI?</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comment-dots"></i>
-                    </div>
-                    <h3>Chat Cerdas</h3>
-                    <p>AI kami memahami konteks dan memberikan respons seperti manusia untuk pertanyaan dan permintaan Anda.</p>
+            <div class="header-right">
+                <div class="language-switcher">
+                    <select id="language-selector">
+                        <option value="en">English</option>
+                        <option value="id">Bahasa Indonesia</option>
+                    </select>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>Unduh Media</h3>
-                    <p>Unduh video, gambar, dan audio dari semua platform utama hanya dengan satu klik.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Pengalaman Mulus</h3>
-                    <p>Antarmuka yang dirancang indah bekerja sempurna di semua perangkat Anda.</p>
-                </div>
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Testimonial Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2 class="section-title">Apa Kata Pengguna Kami?</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Rylac AI benar-benar mengubah cara saya bekerja. Fitur downloadnya sangat membantu untuk riset konten!"
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sarah Wijaya</h4>
-                            <p>Content Creator</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "AI chat-nya sangat responsif dan membantu menyelesaikan masalah teknis yang saya alami."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="User" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Budi Santoso</h4>
-                            <p>Pengembang Web</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Saya suka antarmukanya yang bersih dan mudah digunakan. Tidak perlu waktu lama untuk memahami cara kerjanya."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Dewi Lestari</h4>
-                            <p>Mahasiswa</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Search Section -->
-    <section class="search-section" id="search">
-        <div class="container">
-            <h2 class="section-title">Cari Apapun</h2>
-            <p style="text-align: center; margin-bottom: 30px; color: var(--light-text); padding: 0 20px;">Temukan yang Anda butuhkan dengan cepat menggunakan pencarian powerful kami</p>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Cari fitur, alat, atau bantuan...">
-                <button class="search-btn">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Enter URL or search term...">
+                <button id="search-button">
                     <i class="fas fa-search"></i>
                 </button>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h3>Rylac AI</h3>
-                    <p style="color: var(--light-text); margin-bottom: 20px; font-size: 15px; padding: 0 5px;">Asisten cerdas Anda untuk dunia digital.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Tautan Cepat</h3>
-                    <ul class="footer-links">
-                        <li><a href="#features">Fitur</a></li>
-                        <li><a href="#testimonials">Testimoni</a></li>
-                        <li><a href="https://rylac.my.id" target="_blank">Mulai Sekarang</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Dukungan</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Pusat Bantuan</a></li>
-                        <li><a href="#">Hubungi Kami</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Newsletter</h3>
-                    <p style="color: var(--light-text); font-size: 15px; margin-bottom: 15px; padding: 0 5px;">Berlangganan untuk update dan berita terbaru.</p>
-                    <div style="display: flex; padding: 0 5px;">
-                        <input type="email" placeholder="Email Anda" style="flex: 1; padding: 12px; border: none; border-radius: 8px 0 0 8px; background: rgba(255, 255, 255, 0.8); font-size: 14px;">
-                        <button style="background: var(--primary-color); color: white; border: none; padding: 0 18px; border-radius: 0 8px 8px 0; cursor: pointer;">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2023 Rylac AI. Semua hak dilindungi.
+            <div class="service-selector">
+                <select id="service-selector">
+                    <option value="auto">Auto Detect</option>
+                    <option value="youtube">YouTube Downloader</option>
+                    <option value="tiktok">TikTok Downloader</option>
+                    <option value="instagram">Instagram Downloader</option>
+                    <option value="twitter">Twitter Downloader</option>
+                    <option value="google-drive">Google Drive Downloader</option>
+                    <option value="mediafire">MediaFire Downloader</option>
+                    <option value="pastebin">Pastebin Downloader</option>
+                    <option value="capcut">CapCut Downloader</option>
+                    <option value="snackvideo">SnackVideo Downloader</option>
+                    <option value="pinterest">Pinterest Search</option>
+                    <option value="lyrics">Song Lyrics</option>
+                </select>
             </div>
         </div>
-    </footer>
 
-    <script src="config.js"></script>
+        <div class="tabs">
+            <button class="tab-button active" data-tab="downloader">
+                <i class="fas fa-download"></i>
+                <span class="lang" data-key="downloader">Downloader</span>
+            </button>
+            <button class="tab-button" data-tab="results">
+                <i class="fas fa-list"></i>
+                <span class="lang" data-key="results">Results</span>
+            </button>
+            <button class="tab-button" data-tab="history">
+                <i class="fas fa-history"></i>
+                <span class="lang" data-key="history">History</span>
+            </button>
+            <button class="tab-button" data-tab="settings">
+                <i class="fas fa-cog"></i>
+                <span class="lang" data-key="settings">Settings</span>
+            </button>
+        </div>
+
+        <div class="tab-content active" id="downloader">
+            <div class="intro-section">
+                <h2 class="lang" data-key="welcome_title">Welcome to Rylac Tools</h2>
+                <p class="lang" data-key="welcome_text">Download videos, music, and files from various platforms with ease. Simply paste a URL or search for content.</p>
+            </div>
+            <div class="platform-icons">
+                <div class="platform-icon" data-service="youtube">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </div>
+                <div class="platform-icon" data-service="tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </div>
+                <div class="platform-icon" data-service="instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </div>
+                <div class="platform-icon" data-service="twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </div>
+                <div class="platform-icon" data-service="google-drive">
+                    <i class="fab fa-google-drive"></i>
+                    <span>Google Drive</span>
+                </div>
+                <div class="platform-icon" data-service="mediafire">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <span>MediaFire</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="results">
+            <div class="results-container">
+                <div class="empty-state">
+                    <i class="fas fa-search"></i>
+                    <h3 class="lang" data-key="no_results">No results yet</h3>
+                    <p class="lang" data-key="search_prompt">Enter a URL or search term to get started.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="history">
+            <div class="history-container">
+                <div class="empty-state">
+                    <i class="fas fa-history"></i>
+                    <h3 class="lang" data-key="no_history">No history yet</h3>
+                    <p class="lang" data-key="history_prompt">Your download history will appear here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-content" id="settings">
+            <div class="settings-container">
+                <h2 class="lang" data-key="settings_title">Settings</h2>
+                
+                <div class="setting-item">
+                    <label class="lang" data-key="theme_preference">Theme Preference</label>
+                    <select id="theme-preference">
+                        <option value="system" class="lang" data-key="system_default">System Default</option>
+                        <option value="light" class="lang" data-key="light_mode">Light Mode</option>
+                        <option value="dark" class="lang" data-key="dark_mode">Dark Mode</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="lang" data-key="download_quality">Default Download Quality</label>
+                    <select id="download-quality">
+                        <option value="best" class="lang" data-key="best_quality">Best Quality</option>
+                        <option value="1080" class="lang" data-key="1080p">1080p</option>
+                        <option value="720" class="lang" data-key="720p">720p</option>
+                        <option value="480" class="lang" data-key="480p">480p</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="lang" data-key="download_location">Download Location</label>
+                    <select id="download-location">
+                        <option value="direct" class="lang" data-key="direct_download">Direct Download</option>
+                        <option value="preview" class="lang" data-key="preview_first">Preview First</option>
+                    </select>
+                </div>
+                
+                <div class="setting-item">
+                    <label class="lang" data-key="clear_history">Clear History</label>
+                    <button id="clear-history" class="danger-button lang" data-key="clear_history_button">Clear All History</button>
+                </div>
+                
+                <div class="about-section">
+                    <h3 class="lang" data-key="about_title">About Rylac Tools</h3>
+                    <p class="lang" data-key="about_text">Rylac Tools is a multi-functional web tool that allows you to download content from various platforms. Version 1.0.0</p>
+                    <p class="copyright">&copy; 2024 Rylac Tools. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading-overlay" id="loading-overlay">
+            <div class="loading-spinner"></div>
+            <p class="loading-text lang" data-key="processing">Processing...</p>
+        </div>
+
+        <div class="toast" id="toast"></div>
+    </div>
+
+    <script src="settings.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
