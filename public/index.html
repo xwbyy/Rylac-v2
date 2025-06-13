@@ -3,37 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Uploader</title>
+  <title>ProUpload | Professional File Sharing</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>File Uploader</h1>
-    <p>Upload any file and get a direct link</p>
-    
-    <div class="upload-area" id="uploadArea">
-      <input type="file" id="fileInput" style="display: none;">
-      <div class="drop-zone" id="dropZone">
-        <p>Drag & drop files here or click to select</p>
-        <button id="selectFileBtn">Select File</button>
+  <div class="app-container">
+    <header class="app-header">
+      <div class="header-content">
+        <h1><i class="fas fa-cloud-upload-alt"></i> ProUpload</h1>
+        <p class="tagline">Secure, fast file sharing with direct links</p>
       </div>
-    </div>
-    
-    <div class="result" id="result" style="display: none;">
-      <h3>Upload Successful!</h3>
-      <div class="link-container">
-        <input type="text" id="fileLink" readonly>
-        <button id="copyBtn">Copy</button>
+    </header>
+
+    <main class="main-content">
+      <div class="upload-container" id="uploadContainer">
+        <div class="upload-card">
+          <div class="upload-header">
+            <h2><i class="fas fa-upload"></i> Upload Files</h2>
+            <p>Drag & drop files here or click to browse</p>
+          </div>
+          
+          <div class="drop-zone" id="dropZone">
+            <div class="drop-content">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p class="drop-text">Select or drag files here</p>
+              <p class="drop-subtext">Supports all file types up to 100MB</p>
+              <button class="btn-primary" id="selectFileBtn">
+                <i class="fas fa-folder-open"></i> Choose Files
+              </button>
+            </div>
+            <input type="file" id="fileInput" style="display: none;">
+          </div>
+          
+          <div class="file-info" id="fileInfo" style="display: none;">
+            <div class="file-preview" id="filePreview"></div>
+            <div class="file-details">
+              <h3 id="fileName"></h3>
+              <p id="fileSize"></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <a href="#" id="newUpload">Upload another file</a>
-    </div>
-    
-    <div class="loading" id="loading" style="display: none;">
-      <div class="spinner"></div>
-      <p>Uploading file...</p>
-    </div>
+
+      <div class="result-container" id="resultContainer" style="display: none;">
+        <div class="result-card">
+          <div class="result-header success">
+            <i class="fas fa-check-circle"></i>
+            <h2>Upload Complete!</h2>
+          </div>
+          
+          <div class="result-body">
+            <div class="link-box">
+              <input type="text" id="fileLink" readonly>
+              <button class="btn-copy" id="copyBtn">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+            </div>
+            
+            <div class="share-options">
+              <p>Share your file:</p>
+              <div class="share-buttons">
+                <button class="btn-share" id="shareWhatsApp">
+                  <i class="fab fa-whatsapp"></i>
+                </button>
+                <button class="btn-share" id="shareTelegram">
+                  <i class="fab fa-telegram"></i>
+                </button>
+                <button class="btn-share" id="shareEmail">
+                  <i class="fas fa-envelope"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="result-footer">
+            <button class="btn-secondary" id="newUploadBtn">
+              <i class="fas fa-upload"></i> Upload Another File
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="loading-container" id="loadingContainer" style="display: none;">
+        <div class="loading-card">
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+          </div>
+          <h3>Uploading your file...</h3>
+          <p id="uploadProgress">Processing file</p>
+          <div class="progress-bar">
+            <div class="progress" id="uploadProgressBar"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="app-footer">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="#" id="termsLink">Terms of Service</a>
+          <a href="#" id="privacyLink">Privacy Policy</a>
+          <a href="#" id="contactLink">Contact</a>
+        </div>
+        <p class="copyright">© 2023 ProUpload. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
-  
+
   <script src="upload.js"></script>
 </body>
 </html>
