@@ -7,24 +7,24 @@ import axios from 'axios';
 import FormData from 'form-data';
 import { fileTypeFromBuffer } from 'file-type';
 
-// ES module equivalents for __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Configure multer for file uploads
-const upload = multer({ storage: multer.memoryStorage() });
+const upload = multer({ 
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 100 * 1024 * 1024 // 100MB limit
+  }
+});
 
-// Serve static files from the public directory
-app.use(express.static(path.join(__dirname, 'public'), {
-  extensions: ['html']
-}));
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 // API endpoint for file uploads
 app.post('/api/upload', upload.single('file'), async (req, res) => {
@@ -39,6 +39,7 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
     }
 
     const ext = fileType.ext;
+    const mime = fileType.mime;
     const form = new FormData();
     form.append("fileToUpload", req.file.buffer, `file.${ext}`);
     form.append("reqtype", "fileupload");
@@ -47,14 +48,14 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
       headers: form.getHeaders()
     });
 
-    // Return the URL with your domain (proxy through your domain)
     const catboxUrl = response.data;
-    const yourDomainUrl = `${req.protocol}://${req.get('host')}/file/${encodeURIComponent(catboxUrl)}`;
+    const fileId = path.basename(catboxUrl);
+    const yourDomainUrl = `${req.protocol}://${req.get('host')}/f/${fileId}`;
     
     res.json({ 
-      originalUrl: catboxUrl,
-      yourDomainUrl: yourDomainUrl,
-      directUrl: catboxUrl // For reference
+      url: yourDomainUrl,
+      type: mime,
+      size: req.file.size
     });
 
   } catch (error) {
@@ -64,10 +65,27 @@ app.post('/api/upload', upload.single('file'), async (req, res) => {
 });
 
 // Proxy route to serve files through your domain
-app.get('/file/:url', async (req, res) => {
+app.get('/f/:fileId', async (req, res) => {
   try {
-    const originalUrl = decodeURIComponent(req.params.url);
-    const response = await axios.get(originalUrl, { responseType: 'stream' });
+    const fileId = req.params.fileId;
+    const originalUrl = `https://files.catbox.moe/${fileId}`;
+    
+    const response = await axios.get(originalUrl, { 
+      responseType: 'stream',
+      validateStatus: () => true // To handle 404 errors
+    });
+
+    if (response.status !== 200) {
+      return res.status(404).send('File not found');
+    }
+
+    // Set appropriate headers
+    res.set({
+      'Content-Type': response.headers['content-type'],
+      'Content-Length': response.headers['content-length'],
+      'Cache-Control': 'public, max-age=31536000' // 1 year cache
+    });
+
     response.data.pipe(res);
   } catch (error) {
     console.error('Proxy error:', error);
@@ -75,9 +93,10 @@ app.get('/file/:url', async (req, res) => {
   }
 });
 
-// Handle all other routes by serving the index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
